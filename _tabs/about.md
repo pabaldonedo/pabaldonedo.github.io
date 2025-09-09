@@ -6,8 +6,11 @@ order: 4
 
 Hi!
 
-My name is Pablo and I am a data scientist with almost 10 years of experience in the field. First working at ArcelorMittal Inc, the world largest steel company, and now at Scopely Inc. in big actor in the mobile games landscape. Also, I am part of the teachers of the Data Science program at [Zrive](https://programs.zriveapp.com/data-science).
+I an Pablo, a data scientist with almost a decade of experience in the field. I started my career at ArcelorMittal,the world’s largest steel company, and today I work at Scopely, a major player in the mobile gaming industry. Beyond my day-to-day work, I am also part of the teachers of the Data Science program at [Zrive](https://programs.zriveapp.com/data-science).
 
-The original idea for this blog is to share things I wish I was taught when studying Data Science.
+
+I created this blog to share the insights, lessons, and practical knowledge I wish I’d had when I was first learning data science — the kind of things that often get overlooked sometimes in courses but can make a difference in practice.
+
+As for the name, All Iron: it comes from the old iron mines in northern spain. When miners discovered a sample of pure iron, supervisors would mark it with the phrase “All Iron!”—a moment worth celebrating. In the same spirit, I hope each post here feels like a small but valuable find for you.
 
 Welcome!
