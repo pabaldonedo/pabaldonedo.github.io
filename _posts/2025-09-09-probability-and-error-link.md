@@ -61,7 +61,7 @@ As an example, imagine an online marketplace wants to predict whether a user is 
 
 The task of machine learning here is to reverse the data generation process: from a user’s data (clicks, purchases, time spent) infer whether they are interested or not.
 
-<img src="/assets/img/ml_project/data_generation_process_with_text.png" width="100%" />
+<img src="/assets/img/ml_project/data_generation_process_with_text.png" width="100%" alt="machine learning project steps" />
 
 
 ### A probabilistic lens on prediction
@@ -103,7 +103,7 @@ $$
 
 We reach an interesting observation: **the true price is not a single value but follows a probability distribution around our price prediction curve.**  The figure below illustrates this idea:
 
-<img src="/assets/img/probability/log_surface_price_rotated.svg" width="100%" />
+<img src="/assets/img/probability/log_surface_price_rotated.svg" width="100%" alt="probability surface over log curve"/>
 
 Mathematically:
 
