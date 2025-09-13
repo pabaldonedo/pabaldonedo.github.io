@@ -1,6 +1,6 @@
 ---
 title: The link between the probability realm and error minimisation (I)
-date: 2025-08-25 14:08:00 +0200
+date: 2025-09-09 14:08:00 +0200
 categories: [Metrics, Insights]
 tags: [regularization, probability, log-likelihood, error, metrics]     # TAG names should always be lowercase
 author: pabaldonedo
