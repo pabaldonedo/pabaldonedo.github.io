@@ -4,7 +4,7 @@ date: 2025-09-20 14:08:00 +0200
 categories: [Metrics, Insights]
 tags: [regularization, probability, log-likelihood, error, metrics]     # TAG names should always be lowercase
 author: pabaldonedo
-description: Insights on the relation of L2 regularization and bayesian probability
+description: Insights on the relation of L1 & L2 regularization and bayesian probability
 math: true
 ---
 
@@ -73,7 +73,7 @@ $$
 
 Where $$\propto$$ means _proportional to_.
 
-## Bayes and regularization
+## Bayes and L2 regularization
 
 Let’s recall the setup from previous post:
 $$
@@ -150,9 +150,43 @@ $$
 
 The same mean square error as in the previous post, plus the additional term $$ \lambda \| \theta - \theta_0\|^2 $$. This is the L2 regularization term. You may usually see it with $$\theta_0 = 0$$ simplifying to $$ \lambda \| \theta\|^2 $$
 
+## Bayes and L1 regularization
+
+Just like we did with the Gaussian prior (which gave us L2 regularization), we can try a different assumption for our weights. This time, let’s use the [Laplace distribution]( https://en.wikipedia.org/wiki/Laplace_distribution):
+
+$$
+\begin{equation}
+p(\theta) \sim \mathcal{Laplace}(\theta_0, \frac{1}{b}) =  \frac{b}{2} e^{-b |\theta - \theta_0|}
+\label{eq:l1_weights_prior}
+\end{equation}
+$$
+
+Here:
+- $$\boldsymbol{\theta_0}$$ = the location (our prior guess for the weight value).
+- $$\boldsymbol{\frac{1}{b}}$$ = the scale (controls how tightly concentrated the prior is around $$\theta_0$$).
+
+If we take the log-posterior as before, but now with a Laplace prior, we get:
+
+$$
+\begin{equation}
+\begin{aligned}
+&\max_\theta \log p(\theta | y, X) 
+\\& = \max_\theta \log p(\theta) p (y| \theta, X)
+\\& = \max_\theta  \log p(\theta) + \log p (y| \theta, X)
+\\& = \max_\theta  \log \mathcal{Laplace}(\theta_0, \frac{1}{b}) - ||y_i - \theta_0||^2
+\\& = \max_\theta \log \frac{b}{2} - b |\theta - \theta_0| - ||y_i - f(x_i, \theta)||^2
+\\& = \min_\theta ||y_i - f(x_i, \theta)||^2 +  b |\theta - \theta_0|
+\end{aligned}
+\end{equation}
+$$
+
+Which is the L1 or LASSO regularization!
+
 ## Conclusion
 
-We have shown that L2 regularization is equivalent to the posterior, in bayes terms, of the weights when we assume a Gaussian (normal) prior with mean $$\theta_0$$ and variance $$\frac{1}{\sqrt{2\lambda}}$$.
+We’ve now seen how regularization is equivalent to the posterior, in bayes terms, of the weights when we assume different prior distributions:
+ - L2 regularization (ridge regression): arises from assuming a Gaussian prior on the weights, centered at $$\theta_0$$.
+ - L1 regularization (lasso): arises from assuming a Laplace prior, which has a sharp peak at $$\theta_0$$ and heavier tails.
 
 In plain English:
 
@@ -161,4 +195,4 @@ In plain English:
   - A large $$\lambda$$ = we strongly believe $$\theta$$ must stay near $$\theta_0$$, so we need a lot of evidence (data) to move away.
   - A small $$\lambda$$ = we are more flexible with our beliefs and willing to let the data pull $$\theta$$ away from $$\theta_0$$.
 
-And that’s the Bayesian intuition behind why ridge (L2) regression works.
+And that’s the Bayesian intuition behind why ridge (L2) and Lasso (L1) regressions work.
